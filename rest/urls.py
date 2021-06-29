@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import article_list
+from .views import article_list, article_details
 
 urlpatterns = [
     path('',article_list, name='article_list'),
+    path('detail/<int:pk>/',article_details, name='detail'),
 ]
