@@ -8,6 +8,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
+from rest_framework import generics
+from rest_framework import mixins
 
 
 # @csrf_exempt
@@ -131,3 +133,20 @@ class ArticleDetails(APIView):
         article = self.get_object(pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# GENERIC VIEW
+
+class GenericView(generics.GenericAPIView, mixins.ListModelMixin):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+
+    def get(self, request):
+        return self.list(request)
+
+
+
+
+
+
+

@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import article_list, article_details, ArticleView, ArticleDetails
+from .views import article_list, article_details, ArticleView, ArticleDetails, GenericView
 
 urlpatterns = [
     # path('',article_list, name='article_list'),
     # path('detail/<int:pk>/',article_details, name='detail'),
-    path('',ArticleView.as_view(), name='article_list'),
+
+    # path('',ArticleView.as_view(), name='article_list'),
     path('detail/<int:pk>/',ArticleDetails.as_view(), name='detail'),
+
+    path('',GenericView.as_view()),
 ]
