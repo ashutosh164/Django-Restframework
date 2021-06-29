@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import APIView
 
 
 # @csrf_exempt
@@ -88,9 +89,6 @@ def article_details(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 # CLASS BASED VIEW
-
-
-from rest_framework.views import APIView
 
 
 class ArticleView(APIView):
