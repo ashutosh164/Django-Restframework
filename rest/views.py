@@ -137,7 +137,8 @@ class ArticleDetails(APIView):
 
 # GENERIC VIEW
 
-class GenericView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
+class GenericView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin,
+                  mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
 
@@ -146,6 +147,13 @@ class GenericView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateM
 
     def post(self, request):
         return self.create(request)
+
+    def put(self, request):
+        return self.update(request)
+
+    def delete(self, request):
+        return self.delete(request)
+
 
 
 
